@@ -1,0 +1,127 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>YUMOLD - 홈페이지 리뉴얼 중</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Malgun Gothic', sans-serif;
+      background-color: #000;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      padding: 30px 20px;
+      box-sizing: border-box;
+      text-align: center;
+      overflow-x: hidden;
+    }
+
+    @keyframes fadeInUp {
+      0% {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .fade-in {
+      opacity: 0;
+      animation: fadeInUp 1s ease-out forwards;
+    }
+
+    .delay-1 { animation-delay: 0.3s; }
+    .delay-2 { animation-delay: 0.6s; }
+    .delay-3 { animation-delay: 0.9s; }
+    .delay-4 { animation-delay: 1.2s; }
+
+    .logo-container img {
+      width: 280px;
+      max-width: 90%;
+      margin-bottom: 40px;
+    }
+
+    h1 {
+      font-size: 42px;
+      margin-bottom: 15px;
+    }
+
+    p.subtitle {
+      font-size: 18px;
+      margin-bottom: 40px;
+      color: #ddd;
+    }
+
+    .contact-section {
+      max-width: 700px;
+      width: 100%;
+      background-color: #111;
+      padding: 25px;
+      border-radius: 12px;
+      font-size: 16px;
+      line-height: 1.8;
+      text-align: left;
+    }
+
+    .contact-section b {
+      color: #1e90ff;
+    }
+
+    .footer {
+      margin-top: 40px;
+      font-size: 14px;
+      color: #999;
+    }
+
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 28px;
+      }
+
+      .contact-section {
+        font-size: 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="logo-container fade-in delay-1">
+    <img src="yumold-logo.png" alt="YUMOLD Logo" />
+  </div>
+
+  <h1 class="fade-in delay-2">홈페이지 리뉴얼 중입니다</h1>
+  <p class="subtitle fade-in delay-3">
+    YUMOLD는 현재 새로운 홈페이지를 준비 중입니다.<br />
+    문의사항은 아래 연락처로 부탁드립니다.
+  </p>
+
+  <div class="contact-section fade-in delay-4">
+    <p><b>본사 (경인 영업소)</b><br />
+    인천광역시 남동구 남서로 83번길 49<br />
+    📞 Tel: 032-710-3361 / 📱 Mobile: 010-4677-9627</p>
+
+    <p><b>중부섹터 (수원 영업소)</b><br />
+    경기도 화성시 정남면 만년로 625, 1층<br />
+    📞 Tel: 031-352-9840 / 📱 Mobile: 010-5568-3331</p>
+
+    <p><b>영남본부 (대구 영업소)</b><br />
+    경북 칠곡군 왜관읍 공단로 206 (C동 203호)<br />
+    📞 Tel: 054-975-9810</p>
+
+    <p><b>호남본부 (광주 영업소)</b><br />
+    광주광역시 광산구 진곡산단 중앙로 52<br />
+    📞 Tel: 062-446-9810 / 📱 Mobile: 010-3916-3331</p>
+
+    <p><b>문의 메일</b>: <a href="mailto:you-kr@yumold.com" style="color: #ccc;">you-kr@yumold.com</a></p>
+  </div>
+
+  <div class="footer">© 2025 YUMOLD Co., Ltd. All rights reserved.</div>
+</body>
+</html>
