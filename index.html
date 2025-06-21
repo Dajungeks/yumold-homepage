@@ -1,14 +1,582 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-    <!-- This is a replit script which adds a banner on the top of the page when opened in development mode outside the replit environment -->
-    <script type="text/javascript" src="https://replit.com/public/js/replit-dev-banner.js"></script>
-  </body>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YUMOLD - Global Mold Total Solution</title>
+    <meta name="description" content="YUMOLD는 글로벌 몰드 토탈 솔루션을 제공하는 전문기업입니다. MB, HR, LSR, MTC, FA 등 다양한 솔루션으로 고객의 성공을 지원합니다.">
+    
+    <!-- CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    
+    <style>
+        .hero-gradient {
+            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 50%, #60a5fa 100%);
+        }
+        
+        .scroll-smooth {
+            scroll-behavior: smooth;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            transition: all 0.3s ease-in-out;
+        }
+        
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .logo-symbol {
+            width: 40px;
+            height: 40px;
+            position: relative;
+            margin-right: 12px;
+        }
+
+        .logo-y {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 20px;
+            height: 30px;
+            background: #dc2626;
+            clip-path: polygon(0 0, 50% 60%, 100% 0, 85% 0, 50% 45%, 15% 0);
+        }
+
+        .logo-base {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 15px;
+            background: #1e40af;
+        }
+    </style>
+</head>
+<body class="scroll-smooth">
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-white/90 backdrop-blur-md shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <div class="logo-symbol">
+                        <div class="logo-y"></div>
+                        <div class="logo-base"></div>
+                    </div>
+                    <span class="text-xl font-bold text-blue-900">YUMOLD</span>
+                </div>
+                
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-4">
+                        <a href="#home" class="text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium transition-colors">홈</a>
+                        <a href="#about" class="text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium transition-colors">회사소개</a>
+                        <a href="#history" class="text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium transition-colors">연혁</a>
+                        <a href="#services" class="text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium transition-colors">서비스</a>
+                        <a href="#contact" class="text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium transition-colors">연락처</a>
+                    </div>
+                </div>
+                
+                <!-- Mobile menu button -->
+                <div class="md:hidden">
+                    <button id="mobileMenuBtn" class="text-gray-700 hover:text-blue-600">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile menu -->
+        <div id="mobileMenu" class="md:hidden hidden bg-white shadow-lg">
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <a href="#home" class="block px-3 py-2 text-gray-700 hover:text-blue-600">홈</a>
+                <a href="#about" class="block px-3 py-2 text-gray-700 hover:text-blue-600">회사소개</a>
+                <a href="#history" class="block px-3 py-2 text-gray-700 hover:text-blue-600">연혁</a>
+                <a href="#services" class="block px-3 py-2 text-gray-700 hover:text-blue-600">서비스</a>
+                <a href="#contact" class="block px-3 py-2 text-gray-700 hover:text-blue-600">연락처</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-gradient min-h-screen flex items-center relative overflow-hidden">
+        <div class="absolute inset-0 bg-black/20"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="text-white">
+                    <h1 class="text-4xl md:text-6xl font-bold mb-6 fade-in">
+                        <span>글로벌 몰드</span><br>
+                        <span class="text-yellow-300">토탈 솔루션</span>
+                    </h1>
+                    <p class="text-xl mb-8 opacity-90 fade-in">
+                        YUMOLD는 오랜 노하우의 전문 인력들이 고객이 제품을 생산하는 환경에 맞춤형 Total Solution을 제공하는 전문기업입니다.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4 fade-in">
+                        <button class="bg-yellow-400 text-blue-900 px-8 py-3 rounded-lg font-semibold hover:bg-yellow-300 transition-colors">
+                            서비스 문의
+                        </button>
+                        <button class="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-blue-900 transition-colors">
+                            회사 소개서
+                        </button>
+                    </div>
+                </div>
+                <div class="hidden lg:block">
+                    <div class="w-full h-96 bg-white/10 rounded-lg backdrop-blur-sm flex items-center justify-center">
+                        <div class="text-center">
+                            <div class="logo-symbol mx-auto mb-4" style="width: 80px; height: 80px;">
+                                <div style="position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 40px; height: 60px; background: #dc2626; clip-path: polygon(0 0, 50% 60%, 100% 0, 85% 0, 50% 45%, 15% 0);"></div>
+                                <div style="position: absolute; bottom: 0; left: 0; right: 0; height: 30px; background: #1e40af;"></div>
+                            </div>
+                            <h3 class="text-2xl font-bold text-white">YUMOLD</h3>
+                            <p class="text-white/80">Global Mold Total Solution</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">YUMOLD 소개</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    정밀 금형과 사출성형 솔루션의 글로벌 리더, YUMOLD는 한국과 중국을 중심으로 아시아 전역에서 최고 품질의 제품을 제공합니다
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-16">
+                <div class="fade-in">
+                    <div class="w-full h-64 bg-blue-100 rounded-lg flex items-center justify-center">
+                        <span class="text-gray-600">YUMOLD Factory Image</span>
+                    </div>
+                </div>
+                <div class="fade-in">
+                    <h3 class="text-2xl font-bold text-gray-900 mb-6">YUMOLD 미션</h3>
+                    <p class="text-gray-700 mb-6">
+                        YUMOLD는 오랜 노하우의 전문 인력들이 고객이 제품을 생산하는 환경에 맞춤형 Total Solution을 제공하고, 특히 MOLD BASE와 Hot Runner System을 합리적인 가격으로 공급하고 관리하는 전문기업입니다.
+                    </p>
+                    <ul class="space-y-3">
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-blue-600 mr-3"></i>
+                            <span>MB/HR/Insert 전문 제조업체</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-blue-600 mr-3"></i>
+                            <span>한국-중국 글로벌 생산 네트워크</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-blue-600 mr-3"></i>
+                            <span>HPM38, NAK80, STAVAX 고급 소재 전문</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-blue-600 mr-3"></i>
+                            <span>정밀 가공 및 품질 관리 시스템</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Stats -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 fade-in">
+                <div class="text-center">
+                    <div class="text-3xl md:text-4xl font-bold text-blue-600 mb-2">2007</div>
+                    <div class="text-gray-700">설립년도</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-3xl md:text-4xl font-bold text-blue-600 mb-2">6</div>
+                    <div class="text-gray-700">국내 영업소</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-3xl md:text-4xl font-bold text-blue-600 mb-2">3</div>
+                    <div class="text-gray-700">중국 영업소</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-3xl md:text-4xl font-bold text-blue-600 mb-2">24h</div>
+                    <div class="text-gray-700">대응 시간</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- History Section -->
+    <section id="history" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">연혁</h2>
+                <p class="text-xl text-gray-600">YUMOLD의 혁신과 성장</p>
+            </div>
+
+            <div class="grid lg:grid-cols-4 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+                <!-- 2007 -->
+                <div class="relative group fade-in">
+                    <div class="bg-gradient-to-br from-blue-50 to-blue-100 p-8 rounded-2xl hover:shadow-xl transition-all duration-300 hover:-translate-y-2">
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="text-3xl font-bold text-blue-600">2007</span>
+                            <div class="w-3 h-3 bg-blue-600 rounded-full"></div>
+                        </div>
+                        <h4 class="text-lg font-semibold text-gray-900 mb-3">시작</h4>
+                        <p class="text-sm text-gray-700 leading-relaxed">
+                            지주회사 설립 및 제조공장 구축으로 YUMOLD의 여정이 시작되었습니다.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- 2011 -->
+                <div class="relative group fade-in">
+                    <div class="bg-gradient-to-br from-green-50 to-green-100 p-8 rounded-2xl hover:shadow-xl transition-all duration-300 hover:-translate-y-2">
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="text-3xl font-bold text-green-600">2011</span>
+                            <div class="w-3 h-3 bg-green-600 rounded-full"></div>
+                        </div>
+                        <h4 class="text-lg font-semibold text-gray-900 mb-3">혁신</h4>
+                        <p class="text-sm text-gray-700 leading-relaxed">
+                            DYNA/TERA Series 출시로 기술 혁신의 기반을 마련했습니다.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- 2018 -->
+                <div class="relative group fade-in">
+                    <div class="bg-gradient-to-br from-purple-50 to-purple-100 p-8 rounded-2xl hover:shadow-xl transition-all duration-300 hover:-translate-y-2">
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="text-3xl font-bold text-purple-600">2018</span>
+                            <div class="w-3 h-3 bg-purple-600 rounded-full"></div>
+                        </div>
+                        <h4 class="text-lg font-semibold text-gray-900 mb-3">확장</h4>
+                        <p class="text-sm text-gray-700 leading-relaxed">
+                            한국 법인 설립으로 글로벌 시장 진출의 발판을 마련했습니다.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- 2023 -->
+                <div class="relative group fade-in">
+                    <div class="bg-gradient-to-br from-orange-50 to-orange-100 p-8 rounded-2xl hover:shadow-xl transition-all duration-300 hover:-translate-y-2">
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="text-3xl font-bold text-orange-600">2023</span>
+                            <div class="w-3 h-3 bg-orange-600 rounded-full"></div>
+                        </div>
+                        <h4 class="text-lg font-semibold text-gray-900 mb-3">통합</h4>
+                        <p class="text-sm text-gray-700 leading-relaxed">
+                            (주)유몰드 설립으로 제조-가공-무역의 완전한 통합을 완성했습니다.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Key Achievements -->
+            <div class="mt-16 max-w-4xl mx-auto fade-in">
+                <div class="bg-gray-50 p-8 rounded-2xl">
+                    <div class="grid md:grid-cols-3 gap-8 text-center">
+                        <div>
+                            <div class="text-2xl font-bold text-blue-600 mb-2">17+</div>
+                            <div class="text-gray-700">년간의 성장</div>
+                        </div>
+                        <div>
+                            <div class="text-2xl font-bold text-blue-600 mb-2">9+</div>
+                            <div class="text-gray-700">글로벌 거점</div>
+                        </div>
+                        <div>
+                            <div class="text-2xl font-bold text-blue-600 mb-2">5+</div>
+                            <div class="text-gray-700">핵심 사업 영역</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">비즈니스 영역</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    고객의 경쟁력 최우선 '생산성 향상 및 투자 운영비 절감'을 목표로 Mold 관련 다양한 제안으로 새로운 Business를 개척
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- MB (Mold Base Part) -->
+                <div class="service-card bg-white p-8 rounded-lg shadow-lg hover:shadow-xl fade-in">
+                    <div class="text-blue-600 text-4xl mb-4">
+                        <i class="fas fa-cube"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">MB (Mold Base Part)</h3>
+                    <p class="text-gray-700">
+                        소재부터 완가공, Hot Runner 조립부 가공까지 Level 1~4 단계별 맞춤 서비스 제공
+                    </p>
+                </div>
+
+                <!-- LSR (Liquid Silicone Rubber) -->
+                <div class="service-card bg-white p-8 rounded-lg shadow-lg hover:shadow-xl fade-in">
+                    <div class="text-blue-600 text-4xl mb-4">
+                        <i class="fas fa-flask"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">LSR (Liquid Silicone Rubber)</h3>
+                    <p class="text-gray-700">
+                        Silicone 성형 기술 Solution과 제품 개발 Process를 통한 해석, 설계, 금형 제작까지 원스톱 서비스
+                    </p>
+                </div>
+
+                <!-- HRS (Hot Runner System) -->
+                <div class="service-card bg-white p-8 rounded-lg shadow-lg hover:shadow-xl fade-in">
+                    <div class="text-blue-600 text-4xl mb-4">
+                        <i class="fas fa-fire"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">HRS (Hot Runner System)</h3>
+                    <p class="text-gray-700">
+                        Needs Clinic Care Business (B/S & A/S)로 현장 관리자와 HR 기술 소통, 24시간 이내 대응 시스템
+                    </p>
+                </div>
+
+                <!-- MTC (Mold Temperature Controller) -->
+                <div class="service-card bg-white p-8 rounded-lg shadow-lg hover:shadow-xl fade-in">
+                    <div class="text-blue-600 text-4xl mb-4">
+                        <i class="fas fa-thermometer-half"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">MTC (Mold Temperature Controller)</h3>
+                    <p class="text-gray-700">
+                        Unit Card Type부터 Multi Type까지 4Zone~140Zone 온도 제어 시스템, PID 제어 기술 적용
+                    </p>
+                </div>
+
+                <!-- FA (Factory Automation) -->
+                <div class="service-card bg-white p-8 rounded-lg shadow-lg hover:shadow-xl fade-in">
+                    <div class="text-blue-600 text-4xl mb-4">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">FA (Factory Automation)</h3>
+                    <p class="text-gray-700">
+                        사출기계와 연동한 공장 자동화 솔루션으로 생산 효율성 극대화 및 인력 절감 효과
+                    </p>
+                </div>
+
+                <!-- 3D Channel & Cooling -->
+                <div class="service-card bg-white p-8 rounded-lg shadow-lg hover:shadow-xl fade-in">
+                    <div class="text-blue-600 text-4xl mb-4">
+                        <i class="fas fa-snowflake"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">3D Channel & Cooling</h3>
+                    <p class="text-gray-700">
+                        DMLS(Direct Metal Laser Sintering) Conformal Cooling 형상 적응형 냉각 시스템으로 효율적 온도 제어
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-blue-900 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">연락처</h2>
+                <p class="text-xl opacity-90 max-w-3xl mx-auto">
+                    글로벌 파트너십과 혁신적인 솔루션으로 함께 성장하세요
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <!-- Contact Form -->
+                <div class="fade-in">
+                    <h3 class="text-2xl font-bold mb-6">문의하기</h3>
+                    <form id="contactForm" class="space-y-6">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-medium mb-2">성명</label>
+                                <input type="text" name="name" required class="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg focus:outline-none focus:border-yellow-400 text-white placeholder-white/70" placeholder="홍길동">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-2">이메일</label>
+                                <input type="email" name="email" required class="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg focus:outline-none focus:border-yellow-400 text-white placeholder-white/70" placeholder="example@email.com">
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium mb-2">회사명</label>
+                            <input type="text" name="company" class="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg focus:outline-none focus:border-yellow-400 text-white placeholder-white/70" placeholder="회사명">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium mb-2">문의 내용</label>
+                            <textarea name="message" rows="5" required class="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg focus:outline-none focus:border-yellow-400 text-white placeholder-white/70" placeholder="문의사항을 입력해주세요"></textarea>
+                        </div>
+                        <button type="submit" class="w-full bg-yellow-400 text-blue-900 py-3 rounded-lg font-semibold hover:bg-yellow-300 transition-colors">
+                            문의 보내기
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Contact Info -->
+                <div class="fade-in">
+                    <h3 class="text-2xl font-bold mb-6">연락 정보</h3>
+                    
+                    <div class="space-y-8">
+                        <!-- Korea Headquarters -->
+                        <div class="bg-white/10 backdrop-blur-sm p-6 rounded-lg border border-white/20">
+                            <h4 class="text-xl font-semibold mb-4 text-yellow-300">한국 본사</h4>
+                            <div class="space-y-2">
+                                <p class="flex items-center">
+                                    <i class="fas fa-map-marker-alt w-5 mr-3"></i>
+                                    <span>인천광역시 남동구 남동서로 83번길 49</span>
+                                </p>
+                                <p class="flex items-center">
+                                    <i class="fas fa-phone w-5 mr-3"></i>
+                                    <span>032-710-3361</span>
+                                </p>
+                                <p class="flex items-center">
+                                    <i class="fas fa-fax w-5 mr-3"></i>
+                                    <span>070-4325-3361</span>
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- China Network -->
+                        <div class="bg-white/10 backdrop-blur-sm p-6 rounded-lg border border-white/20">
+                            <h4 class="text-xl font-semibold mb-4 text-yellow-300">중국 네트워크</h4>
+                            <div class="space-y-2">
+                                <p class="flex items-center">
+                                    <i class="fas fa-building w-5 mr-3"></i>
+                                    <span>상해, 난징, 소주 영업소</span>
+                                </p>
+                                <p class="flex items-center">
+                                    <i class="fas fa-cogs w-5 mr-3"></i>
+                                    <span>MB & HR 전문 공급</span>
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Working Hours -->
+                        <div class="bg-white/10 backdrop-blur-sm p-6 rounded-lg border border-white/20">
+                            <h4 class="text-xl font-semibold mb-4 text-yellow-300">운영 시간</h4>
+                            <div class="space-y-2">
+                                <p>월-금: 오전 9시 - 오후 6시</p>
+                                <p>토요일: 오전 9시 - 오후 1시</p>
+                                <p>일요일: 휴무</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <div class="flex items-center mb-4">
+                        <div class="logo-symbol">
+                            <div class="logo-y"></div>
+                            <div class="logo-base"></div>
+                        </div>
+                        <span class="text-xl font-bold">YUMOLD</span>
+                    </div>
+                    <p class="text-gray-400 mb-4">
+                        글로벌 몰드 토탈 솔루션의 선두주자
+                    </p>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">빠른 링크</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#home" class="text-gray-400 hover:text-yellow-400 transition-colors">홈</a></li>
+                        <li><a href="#about" class="text-gray-400 hover:text-yellow-400 transition-colors">회사소개</a></li>
+                        <li><a href="#history" class="text-gray-400 hover:text-yellow-400 transition-colors">연혁</a></li>
+                        <li><a href="#services" class="text-gray-400 hover:text-yellow-400 transition-colors">서비스</a></li>
+                        <li><a href="#contact" class="text-gray-400 hover:text-yellow-400 transition-colors">연락처</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">연락처</h3>
+                    <div class="space-y-2 text-gray-400">
+                        <p>032-710-3361</p>
+                        <p>인천광역시 남동구 남동서로 83번길 49</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-12 pt-8 text-center">
+                <p class="text-gray-400">
+                    © 2024 YUMOLD. 모든 권리 보유.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        
+        mobileMenuBtn.addEventListener('click', function() {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+                // Close mobile menu if open
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Fade in animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+        
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Contact form submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('문의가 성공적으로 전송되었습니다. 빠른 시일 내에 연락드리겠습니다.');
+            this.reset();
+        });
+
+        // Initialize animations
+        window.addEventListener('load', function() {
+            // Trigger initial fade-ins for elements in viewport
+            const fadeElements = document.querySelectorAll('.fade-in');
+            fadeElements.forEach(el => {
+                const rect = el.getBoundingClientRect();
+                if (rect.top < window.innerHeight && rect.bottom > 0) {
+                    el.classList.add('visible');
+                }
+            });
+        });
+    </script>
+</body>
 </html>
